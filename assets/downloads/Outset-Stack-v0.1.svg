@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="640" viewBox="0 0 920 640" role="img" aria-label="The Outset Stack: Cognitive, Normative, Commitment, Structural, Temporal">
+  <rect x="0" y="0" width="920" height="640" fill="#ffffff"/>
+  <text x="60" y="70" font-family="Arial, sans-serif" font-size="34" fill="#111827">The Outset Stack</text>
+  <text x="60" y="105" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">How beginnings stack and shape outcomes</text>
+
+  <!-- helper -->
+  <defs>
+    <style>
+      .box{fill:#fafafa;stroke:#e5e7eb;stroke-width:2;rx:14;ry:14}
+      .title{font-family:Arial, sans-serif;font-size:18px;fill:#111827;font-weight:700}
+      .desc{font-family:Arial, sans-serif;font-size:14px;fill:#4b5563}
+      .arrow{font-family:Arial, sans-serif;font-size:22px;fill:#6b7280}
+    </style>
+  </defs>
+
+  <!-- boxes -->
+  <rect class="box" x="60" y="150" width="800" height="70"/>
+  <text class="title" x="90" y="190">Cognitive outset</text>
+  <text class="desc" x="290" y="190">Framing, assumptions, defaults</text>
+
+  <text class="arrow" x="450" y="240">↓</text>
+
+  <rect class="box" x="60" y="260" width="800" height="70"/>
+  <text class="title" x="90" y="300">Normative outset</text>
+  <text class="desc" x="290" y="300">Legitimacy, principles, red lines</text>
+
+  <text class="arrow" x="450" y="350">↓</text>
+
+  <rect class="box" x="60" y="370" width="800" height="70"/>
+  <text class="title" x="90" y="410">Commitment outset</text>
+  <text class="desc" x="290" y="410">Agreements, obligations, lock-ins</text>
+
+  <text class="arrow" x="450" y="460">↓</text>
+
+  <rect class="box" x="60" y="480" width="800" height="70"/>
+  <text class="title" x="90" y="520">Structural outset</text>
+  <text class="desc" x="290" y="520">Governance, incentives, control surfaces</text>
+
+  <text class="arrow" x="450" y="570">↓</text>
+
+  <rect class="box" x="60" y="590" width="800" height="70" transform="translate(0,-40)"/>
+  <text class="title" x="90" y="625" transform="translate(0,-40)">Temporal outset</text>
+  <text class="desc" x="290" y="625" transform="translate(0,-40)">Sequencing, irreversibility, compounding</text>
+</svg>

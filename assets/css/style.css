@@ -1,0 +1,105 @@
+:root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#4b5563;
+  --line:#e5e7eb;
+  --link:#1d4ed8;
+  --max: 860px;
+  --pad: 22px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+header{
+  border-bottom:1px solid var(--line);
+  padding: 12px var(--pad);
+  background:#fff;
+}
+
+nav{
+  max-width: var(--max);
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+nav a{
+  color: var(--link);
+  text-decoration: none;
+  margin-right: 12px;
+}
+nav a:hover{ text-decoration: underline; }
+
+main{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px var(--pad);
+}
+
+h1{font-size: 44px; letter-spacing:-0.02em; margin: 0 0 6px;}
+h2{font-size: 22px; font-weight: 600; margin: 0 0 18px; color: var(--muted);}
+
+h3{font-size: 18px; margin-top: 22px; margin-bottom: 8px;}
+p{margin: 0 0 14px;}
+
+.meta{
+  font-size: 14px;
+  color: var(--muted);
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fafafa;
+  display: inline-block;
+  margin: 8px 0 18px;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding: 18px var(--pad);
+  background:#fff;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer .inner{
+  max-width: var(--max);
+  margin: 0 auto;
+}
+footer a{ color: var(--link); text-decoration: none; }
+footer a:hover{ text-decoration: underline; }
+
+@media (max-width: 520px){
+  h1{font-size: 34px;}
+  h2{font-size: 18px;}
+  nav a{display:inline-block; margin: 6px 10px 6px 0;}
+}
+
+.stack{
+  margin: 16px 0 6px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafafa;
+}
+.layer{
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+}
+.layer span{
+  color: var(--muted);
+  font-size: 14px;
+}
+.arrow{
+  text-align:center;
+  color: var(--muted);
+  margin: 8px 0;
+  font-size: 18px;
+}

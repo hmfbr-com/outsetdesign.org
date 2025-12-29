@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://outsetdesign.org/sitemap.xml
