@@ -2,7 +2,7 @@
 
 Version: 0.1
 Status: Active
-Date: 2026-05-13
+Date: 2026-05-14
 
 ## Purpose
 
@@ -15,6 +15,8 @@ The purpose is to validate:
 - markdown/json continuity loading
 - browser-extension-backed continuity augmentation
 - repository-native continuity topology
+- recursive locality interaction
+- contextual traversal experimentation
 
 ---
 
@@ -35,6 +37,22 @@ This represents the first operational continuity membrane validation under actua
 
 ---
 
+# First Recursive Locality Runtime Experiment
+
+The runtime now also includes the first recursive-locality-oriented runtime interaction experiment.
+
+Current implemented locality capabilities:
+
+- locality index loading
+- neighboring locality surfacing
+- contextual locality overlay rendering
+- nearby-context-first interaction
+- lightweight locality augmentation
+
+This represents the first operational recursive locality experimentation surface under actual GitHub-native runtime conditions.
+
+---
+
 # Current Runtime Scope
 
 Included:
@@ -45,6 +63,9 @@ Included:
 - continuity runtime experimentation
 - browser extension overlays
 - local-first runtime augmentation
+- recursive locality overlays
+- locality index loading
+- nearby-locality surfacing
 
 Excluded:
 
@@ -52,6 +73,8 @@ Excluded:
 - orchestration systems
 - AI systems
 - production-scale runtime infrastructure
+- exhaustive semantic surfacing
+- centralized semantic orchestration
 
 ---
 
@@ -66,7 +89,9 @@ generated runtime artifacts
     ↓
 GitHub Pages runtime
     ↓
-browser extension overlays
+contextual locality overlays
+    ↓
+recursive locality interaction
     ↓
 local-first continuity augmentation
 ```
@@ -81,7 +106,9 @@ Validate that repository-native continuity artifacts can:
 - render
 - synchronize
 - augment
-- and remain continuity-aware
+- remain continuity-aware
+- support contextual traversal
+- support locality-aware interaction
 
 under actual GitHub-native runtime conditions.
 
@@ -101,9 +128,9 @@ under actual GitHub-native runtime conditions.
 
 ## Phase 1 — Runtime Surface Validation
 
-Status: ACTIVE
+Status: COMPLETE
 
-Targets:
+Validated:
 
 - GitHub Pages runtime loading
 - runtime manifest loading
@@ -113,7 +140,21 @@ Targets:
 
 ---
 
-## Phase 2 — Continuity Interaction
+## Phase 2 — Recursive Locality Interaction
+
+Status: ACTIVE
+
+Current targets:
+
+- locality index loading
+- nearby-locality overlays
+- recursive locality interaction
+- contextual traversal experimentation
+- progressive disclosure experimentation
+
+---
+
+## Phase 3 — Continuity Interaction
 
 Status: NEXT
 
@@ -127,7 +168,7 @@ Targets:
 
 ---
 
-## Phase 3 — Cross-Repository Runtime Interaction
+## Phase 4 — Cross-Repository Runtime Interaction
 
 Status: PLANNED
 
@@ -140,7 +181,7 @@ Targets:
 
 ---
 
-## Phase 4 — Workflow-Generated Runtime Infrastructure
+## Phase 5 — Workflow-Generated Runtime Infrastructure
 
 Status: PLANNED
 
@@ -154,7 +195,7 @@ Targets:
 
 ---
 
-## Phase 5 — SVG-Native Runtime Exploration
+## Phase 6 — SVG-Native Runtime Exploration
 
 Status: FUTURE
 
@@ -176,6 +217,8 @@ The runtime should currently remain:
 - observable
 - reconstructable
 - operationally grounded
+- locality-aware
+- progressively disclosed
 
 before large-scale capability expansion.
 
@@ -189,6 +232,8 @@ before large-scale capability expansion.
 - overlay/runtime collapse
 - topology drift
 - continuity fragmentation
+- semantic overload
+- recursive locality explosion
 
 ---
 
@@ -206,4 +251,6 @@ The runtime has now crossed from:
 
 into:
 
-- actual operational GitHub-native continuity experimentation.
+- actual operational GitHub-native continuity experimentation
+- recursive locality experimentation
+- contextual traversal experimentation.
