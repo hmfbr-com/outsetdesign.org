@@ -1,0 +1,20 @@
+{
+  "locality": "continuity-runtime",
+  "neighbors": [
+    {
+      "label": "Runtime README",
+      "type": "readme",
+      "path": "./README.md"
+    },
+    {
+      "label": "Runtime Manifest",
+      "type": "manifest",
+      "path": "./runtime-manifest.json"
+    },
+    {
+      "label": "Extension Runtime",
+      "type": "extension",
+      "path": "./extension/README.md"
+    }
+  ]
+}
