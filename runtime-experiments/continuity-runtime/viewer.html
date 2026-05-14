@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Artifact Viewer</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 2rem; background: #111; color: #eee; }
+#status { margin-bottom: 1rem; padding: 1rem; border: 1px solid #444; }
+#content { background: #1a1a1a; padding: 1rem; white-space: pre-wrap; border: 1px solid #333; }
+a { color: #8ecbff; }
+</style>
+</head>
+<body>
+<h1>Continuity Artifact Viewer</h1>
+<div><a href="./index.html">← Runtime</a></div>
+<div id="status">Loading artifact...</div>
+<pre id="content"></pre>
+<script>
+async function loadArtifact() {
+const params = new URLSearchParams(window.location.search)
+const artifact = params.get('artifact')
+const status = document.getElementById('status')
+const content = document.getElementById('content')
+if (!artifact) {
+status.textContent = 'No artifact specified.'
+return
+}
+try {
+const response = await fetch(artifact)
+const text = await response.text()
+content.textContent = text
+status.textContent = 'Artifact loaded successfully.'
+console.log('artifact_loaded', artifact)
+} catch (error) {
+status.textContent = 'Artifact loading failed.'
+console.error('artifact_loading_failed', error)
+}
+}
+loadArtifact()
+</script>
+</body>
+</html>
