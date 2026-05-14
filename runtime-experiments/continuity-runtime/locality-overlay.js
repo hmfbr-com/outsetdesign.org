@@ -42,7 +42,7 @@ function renderLocalityOverlay(locality) {
     item.style.marginBottom = '6px'
 
     const link = document.createElement('a')
-    link.href = neighbor.path
+    link.href = `./viewer.html?artifact=${encodeURIComponent(neighbor.path)}`
     link.innerText = neighbor.label
     link.style.color = '#8ecbff'
     link.style.textDecoration = 'none'
