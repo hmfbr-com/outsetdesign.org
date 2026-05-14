@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Continuity Membrane",
+  "version": "0.1.0",
+  "description": "Local-first continuity overlay runtime experiment.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://hmfbr-com.github.io/*",
+    "https://outsetdesign.org/*",
+    "https://fairdealpolicy.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://hmfbr-com.github.io/*",
+        "https://outsetdesign.org/*",
+        "https://fairdealpolicy.org/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Continuity Membrane"
+  }
+}
