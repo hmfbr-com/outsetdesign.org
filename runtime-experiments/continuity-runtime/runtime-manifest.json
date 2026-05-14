@@ -1,0 +1,24 @@
+{
+  "runtime": "continuity-runtime-experiment",
+  "version": "0.1",
+  "status": "active",
+  "repositories": [
+    {
+      "name": "outsetdesign.org",
+      "role": "public runtime surface"
+    },
+    {
+      "name": "fairdealpolicy.org",
+      "role": "secondary continuity node"
+    },
+    {
+      "name": "plab.studio",
+      "role": "private developmental substrate"
+    }
+  ],
+  "capabilities": [
+    "runtime manifest loading",
+    "GitHub Pages runtime rendering",
+    "continuity runtime experimentation"
+  ]
+}
