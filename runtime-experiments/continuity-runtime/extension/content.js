@@ -2,18 +2,52 @@ console.log('Continuity Membrane overlay injected');
 
 async function injectRuntimeScript(path) {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+    try {
+      const script = document.createElement('script');
+      const resolvedUrl = chrome.runtime.getURL(path);
 
-    script.src = chrome.runtime.getURL(path);
-    script.onload = () => resolve(path);
-    script.onerror = error => reject(error);
+      script.src = resolvedUrl;
+      script.async = false;
 
-    (document.head || document.documentElement).appendChild(script);
+      script.onload = () => {
+        console.log('runtime_script_load_success', {
+          path,
+          resolvedUrl
+        });
+
+        script.remove();
+
+        resolve(path);
+      };
+
+      script.onerror = error => {
+        console.error('runtime_script_load_failed', {
+          path,
+          resolvedUrl,
+          error
+        });
+
+        reject({
+          path,
+          resolvedUrl,
+          error
+        });
+      };
+
+      (document.head || document.documentElement).appendChild(script);
+    } catch (error) {
+      reject({
+        path,
+        error
+      });
+    }
   });
 }
 
 async function initializeRuntimeInjection() {
   try {
+    console.log('continuity_runtime_injection_started');
+
     const runtimeScripts = [
       'runtime/runtime-registry-loader.js',
       'runtime/runtime-source-resolver.js',
@@ -21,11 +55,11 @@ async function initializeRuntimeInjection() {
       'runtime/runtime-entry.js'
     ];
 
-    for (const script of runtimeScripts) {
-      await injectRuntimeScript(script);
+    for (const runtimeScript of runtimeScripts) {
+      await injectRuntimeScript(runtimeScript);
 
       console.log('runtime_script_injected', {
-        script
+        runtimeScript
       });
     }
 
@@ -53,4 +87,8 @@ async function initializeRuntimeInjection() {
   }
 }
 
-initializeRuntimeInjection();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeRuntimeInjection);
+} else {
+  initializeRuntimeInjection();
+}
