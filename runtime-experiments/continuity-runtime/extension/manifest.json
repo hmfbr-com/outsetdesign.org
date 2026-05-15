@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Continuity Membrane",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local-first continuity overlay runtime experiment.",
   "permissions": [
     "storage",
@@ -10,7 +10,8 @@
   "host_permissions": [
     "https://hmfbr-com.github.io/*",
     "https://outsetdesign.org/*",
-    "https://fairdealpolicy.org/*"
+    "https://fairdealpolicy.org/*",
+    "https://chatgpt.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -20,10 +21,27 @@
       "matches": [
         "https://hmfbr-com.github.io/*",
         "https://outsetdesign.org/*",
-        "https://fairdealpolicy.org/*"
+        "https://fairdealpolicy.org/*",
+        "https://chatgpt.com/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "runtime/runtime-registry-loader.js",
+        "runtime/runtime-source-resolver.js",
+        "runtime/runtime-bootstrap-sequencer.js",
+        "runtime/runtime-entry.js"
+      ],
+      "matches": [
+        "https://hmfbr-com.github.io/*",
+        "https://outsetdesign.org/*",
+        "https://fairdealpolicy.org/*",
+        "https://chatgpt.com/*"
+      ]
     }
   ],
   "action": {
