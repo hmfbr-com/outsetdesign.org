@@ -1,8 +1,8 @@
 # Continuity Runtime Experiment
 
-Version: 0.1
+Version: 0.2
 Status: Active
-Date: 2026-05-14
+Date: 2026-05-15
 
 ## Purpose
 
@@ -17,12 +17,75 @@ The purpose is to validate:
 - repository-native continuity topology
 - recursive locality interaction
 - contextual traversal experimentation
+- runtime lifecycle stabilization
+- runtime topology observability
+- Global Configuration System propagation
+
+---
+
+# Canonical Runtime Module Batch
+
+The runtime now includes canonical executable runtime modules located under:
+
+```text
+extension/runtime/
+```
+
+Current canonical runtime modules:
+
+- runtime-singleton.js
+- runtime-state.js
+- runtime-overlay.js
+- runtime-readme-discovery.js
+- runtime-topology.js
+- runtime-bootstrap.js
+
+These modules now provide:
+
+- singleton runtime lifecycle stabilization
+- runtime state visibility
+- runtime overlay stabilization
+- recursive README discovery
+- runtime topology inspection
+- canonical runtime bootstrap sequencing
+- runtime configuration propagation
+
+---
+
+# Global Configuration System Integration
+
+The runtime now propagates:
+
+```javascript
+window.CONTINUITY_RUNTIME_CONFIG
+```
+
+Current propagated configuration fields:
+
+- runtimeId
+- runtimeVersion
+- repositories
+- capabilities
+- initialization timestamps
+
+The current runtime direction increasingly favors:
+
+- configuration-driven runtime topology
+- bounded runtime observability
+- locality-aware runtime interaction
+- explicit runtime lifecycle visibility
+
+rather than:
+
+- hidden mutable state
+- topology-fragmented runtime assumptions
+- hardcoded runtime semantics
 
 ---
 
 # First Operational Runtime Validation
 
-The first operational runtime confrontation has now successfully validated:
+The first operational runtime confrontation has successfully validated:
 
 - GitHub Pages runtime loading
 - runtime manifest loading
@@ -31,15 +94,19 @@ The first operational runtime confrontation has now successfully validated:
 - extension popup interaction
 - content script injection
 - overlay rendering
+- runtime bootstrap sequencing
+- singleton runtime initialization
+- runtime configuration propagation
+- runtime topology inspection
 - GitHub-hosted runtime augmentation
 
 This represents the first operational continuity membrane validation under actual browser and GitHub-native runtime conditions.
 
 ---
 
-# First Recursive Locality Runtime Experiment
+# Recursive Locality Runtime Experiment
 
-The runtime now also includes the first recursive-locality-oriented runtime interaction experiment.
+The runtime now includes recursive-locality-oriented runtime interaction.
 
 Current implemented locality capabilities:
 
@@ -47,6 +114,7 @@ Current implemented locality capabilities:
 - neighboring locality surfacing
 - contextual locality overlay rendering
 - nearby-context-first interaction
+- recursive README discovery
 - lightweight locality augmentation
 
 This represents the first operational recursive locality experimentation surface under actual GitHub-native runtime conditions.
@@ -59,6 +127,8 @@ Included:
 
 - runtime manifest loading
 - runtime observability
+- runtime topology inspection
+- runtime lifecycle stabilization
 - GitHub Pages runtime execution
 - continuity runtime experimentation
 - browser extension overlays
@@ -66,15 +136,17 @@ Included:
 - recursive locality overlays
 - locality index loading
 - nearby-locality surfacing
+- recursive README discovery
+- singleton runtime lifecycle control
 
 Excluded:
 
-- advanced overlays
-- orchestration systems
-- AI systems
-- production-scale runtime infrastructure
+- advanced orchestration systems
+- hidden automation layers
+- centralized semantic governance
 - exhaustive semantic surfacing
-- centralized semantic orchestration
+- production-scale runtime infrastructure
+- opaque mutable runtime state
 
 ---
 
@@ -88,6 +160,8 @@ GitHub workflows
 generated runtime artifacts
     ↓
 GitHub Pages runtime
+    ↓
+runtime topology stabilization
     ↓
 contextual locality overlays
     ↓
@@ -109,6 +183,8 @@ Validate that repository-native continuity artifacts can:
 - remain continuity-aware
 - support contextual traversal
 - support locality-aware interaction
+- expose runtime topology
+- expose runtime lifecycle state
 
 under actual GitHub-native runtime conditions.
 
@@ -137,6 +213,7 @@ Validated:
 - browser extension loading
 - overlay injection
 - runtime observability
+- singleton runtime lifecycle
 
 ---
 
@@ -149,12 +226,27 @@ Current targets:
 - locality index loading
 - nearby-locality overlays
 - recursive locality interaction
+- recursive README discovery
 - contextual traversal experimentation
 - progressive disclosure experimentation
 
 ---
 
-## Phase 3 — Continuity Interaction
+## Phase 3 — Runtime Topology Observability
+
+Status: ACTIVE
+
+Current targets:
+
+- runtime topology inspection
+- runtime lifecycle visibility
+- runtime module stabilization
+- runtime configuration propagation
+- runtime dependency visibility
+
+---
+
+## Phase 4 — Continuity Interaction
 
 Status: NEXT
 
@@ -168,7 +260,7 @@ Targets:
 
 ---
 
-## Phase 4 — Cross-Repository Runtime Interaction
+## Phase 5 — Cross-Repository Runtime Interaction
 
 Status: PLANNED
 
@@ -181,7 +273,7 @@ Targets:
 
 ---
 
-## Phase 5 — Workflow-Generated Runtime Infrastructure
+## Phase 6 — Workflow-Generated Runtime Infrastructure
 
 Status: PLANNED
 
@@ -195,7 +287,7 @@ Targets:
 
 ---
 
-## Phase 6 — SVG-Native Runtime Exploration
+## Phase 7 — SVG-Native Runtime Exploration
 
 Status: FUTURE
 
@@ -219,6 +311,8 @@ The runtime should currently remain:
 - operationally grounded
 - locality-aware
 - progressively disclosed
+- topology-coherent
+- configuration-driven
 
 before large-scale capability expansion.
 
@@ -234,6 +328,8 @@ before large-scale capability expansion.
 - continuity fragmentation
 - semantic overload
 - recursive locality explosion
+- runtime duplication
+- bootstrap sequencing conflicts
 
 ---
 
@@ -251,6 +347,8 @@ The runtime has now crossed from:
 
 into:
 
-- actual operational GitHub-native continuity experimentation
+- operational runtime lifecycle experimentation
+- executable runtime topology stabilization
 - recursive locality experimentation
-- contextual traversal experimentation.
+- contextual traversal experimentation
+- configuration-aware runtime infrastructure.
