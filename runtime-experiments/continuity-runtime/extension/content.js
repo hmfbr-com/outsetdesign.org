@@ -2,13 +2,21 @@ console.log('Continuity Membrane overlay injected');
 
 const CONTINUITY_GLOBAL_CONFIG = {
   runtimeId: 'continuity-runtime-experiment',
-  runtimeVersion: '0.1.2',
+  runtimeVersion: '0.2.1',
   overlayId: 'continuity-membrane-overlay',
   runtimeFlag: '__CONTINUITY_RUNTIME_ACTIVE__',
   runtimeScripts: [
     'runtime/runtime-registry-loader.js',
     'runtime/runtime-source-resolver.js',
     'runtime/runtime-bootstrap-sequencer.js',
+    'runtime/runtime-singleton.js',
+    'runtime/runtime-state.js',
+    'runtime/runtime-overlay.js',
+    'runtime/runtime-readme-discovery.js',
+    'runtime/runtime-topology.js',
+    'runtime/runtime-diagnostics-overlay.js',
+    'runtime/runtime-continuity-packet.js',
+    'runtime/runtime-bootstrap.js',
     'runtime/runtime-entry.js'
   ]
 };
