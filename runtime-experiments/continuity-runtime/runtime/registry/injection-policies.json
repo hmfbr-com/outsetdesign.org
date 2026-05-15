@@ -1,0 +1,19 @@
+{
+  "policies": {
+    "safe-lightweight": {
+      "mutationObservers": false,
+      "heavyTraversal": false,
+      "clipboardExport": true
+    },
+    "repository-aware": {
+      "readmeTraversal": true,
+      "repositoryContext": true,
+      "overlayInjection": true
+    },
+    "continuity-enabled": {
+      "continuityExport": true,
+      "runtimeDiagnostics": true,
+      "localityTraversal": true
+    }
+  }
+}
