@@ -1,5 +1,18 @@
 console.log('Continuity Membrane overlay injected');
 
+const CONTINUITY_GLOBAL_CONFIG = {
+  runtimeId: 'continuity-runtime-experiment',
+  runtimeVersion: '0.1.2',
+  overlayId: 'continuity-membrane-overlay',
+  runtimeFlag: '__CONTINUITY_RUNTIME_ACTIVE__',
+  runtimeScripts: [
+    'runtime/runtime-registry-loader.js',
+    'runtime/runtime-source-resolver.js',
+    'runtime/runtime-bootstrap-sequencer.js',
+    'runtime/runtime-entry.js'
+  ]
+};
+
 async function injectRuntimeScript(path) {
   return new Promise((resolve, reject) => {
     try {
@@ -8,6 +21,7 @@ async function injectRuntimeScript(path) {
 
       script.src = resolvedUrl;
       script.async = false;
+      script.dataset.continuityRuntime = CONTINUITY_GLOBAL_CONFIG.runtimeId;
 
       script.onload = () => {
         console.log('runtime_script_load_success', {
@@ -20,17 +34,17 @@ async function injectRuntimeScript(path) {
         resolve(path);
       };
 
-      script.onerror = error => {
+      script.onerror = errorEvent => {
         console.error('runtime_script_load_failed', {
           path,
           resolvedUrl,
-          error
+          errorEvent
         });
 
         reject({
           path,
           resolvedUrl,
-          error
+          errorEvent
         });
       };
 
@@ -46,16 +60,16 @@ async function injectRuntimeScript(path) {
 
 async function initializeRuntimeInjection() {
   try {
+    if (window[CONTINUITY_GLOBAL_CONFIG.runtimeFlag]) {
+      console.log('continuity_runtime_already_initialized');
+      return;
+    }
+
+    window[CONTINUITY_GLOBAL_CONFIG.runtimeFlag] = true;
+
     console.log('continuity_runtime_injection_started');
 
-    const runtimeScripts = [
-      'runtime/runtime-registry-loader.js',
-      'runtime/runtime-source-resolver.js',
-      'runtime/runtime-bootstrap-sequencer.js',
-      'runtime/runtime-entry.js'
-    ];
-
-    for (const runtimeScript of runtimeScripts) {
+    for (const runtimeScript of CONTINUITY_GLOBAL_CONFIG.runtimeScripts) {
       await injectRuntimeScript(runtimeScript);
 
       console.log('runtime_script_injected', {
@@ -63,32 +77,42 @@ async function initializeRuntimeInjection() {
       });
     }
 
-    const overlay = document.createElement('div');
+    if (!document.getElementById(CONTINUITY_GLOBAL_CONFIG.overlayId)) {
+      const overlay = document.createElement('div');
 
-    overlay.id = 'continuity-membrane-overlay';
-    overlay.innerText = 'Continuity Membrane Active';
+      overlay.id = CONTINUITY_GLOBAL_CONFIG.overlayId;
+      overlay.innerText = 'Continuity Membrane Active';
 
-    overlay.style.position = 'fixed';
-    overlay.style.bottom = '16px';
-    overlay.style.right = '16px';
-    overlay.style.padding = '8px 12px';
-    overlay.style.background = '#111';
-    overlay.style.color = '#fff';
-    overlay.style.border = '1px solid #444';
-    overlay.style.zIndex = '999999';
-    overlay.style.fontFamily = 'Arial, sans-serif';
-    overlay.style.fontSize = '12px';
+      overlay.style.position = 'fixed';
+      overlay.style.bottom = '16px';
+      overlay.style.right = '16px';
+      overlay.style.padding = '8px 12px';
+      overlay.style.background = '#111';
+      overlay.style.color = '#fff';
+      overlay.style.border = '1px solid #444';
+      overlay.style.zIndex = '999999';
+      overlay.style.fontFamily = 'Arial, sans-serif';
+      overlay.style.fontSize = '12px';
 
-    document.body.appendChild(overlay);
+      document.body.appendChild(overlay);
+    }
 
-    console.log('continuity_runtime_injection_complete');
+    console.log('continuity_runtime_injection_complete', {
+      runtime: CONTINUITY_GLOBAL_CONFIG.runtimeId,
+      version: CONTINUITY_GLOBAL_CONFIG.runtimeVersion
+    });
   } catch (error) {
-    console.error('continuity_runtime_injection_failed', error);
+    console.error('continuity_runtime_injection_failed', {
+      error,
+      runtime: CONTINUITY_GLOBAL_CONFIG.runtimeId
+    });
   }
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeRuntimeInjection);
+  document.addEventListener('DOMContentLoaded', initializeRuntimeInjection, {
+    once: true
+  });
 } else {
   initializeRuntimeInjection();
 }
