@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "id": "chatgpt",
+      "type": "llm-interface",
+      "domains": ["chatgpt.com"],
+      "runtimeProfile": "lightweight",
+      "policy": "safe-lightweight",
+      "capabilities": [
+        "overlay",
+        "continuity-export",
+        "runtime-diagnostics"
+      ]
+    },
+    {
+      "id": "github",
+      "type": "repository-interface",
+      "domains": ["github.com"],
+      "runtimeProfile": "diagnostics",
+      "policy": "repository-aware",
+      "capabilities": [
+        "repository-context",
+        "runtime-observability"
+      ]
+    },
+    {
+      "id": "outsetdesign",
+      "type": "ecosystem-domain",
+      "domains": ["outsetdesign.org"],
+      "runtimeProfile": "continuity-heavy",
+      "policy": "continuity-enabled",
+      "capabilities": [
+        "overlay",
+        "continuity-export",
+        "locality-traversal",
+        "runtime-diagnostics"
+      ]
+    }
+  ]
+}
