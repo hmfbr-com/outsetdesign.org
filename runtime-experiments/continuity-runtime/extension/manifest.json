@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Continuity Membrane",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Local-first continuity overlay runtime experiment.",
   "permissions": [
     "storage",
@@ -34,7 +34,13 @@
         "runtime/runtime-registry-loader.js",
         "runtime/runtime-source-resolver.js",
         "runtime/runtime-bootstrap-sequencer.js",
-        "runtime/runtime-entry.js"
+        "runtime/runtime-entry.js",
+        "runtime/runtime-singleton.js",
+        "runtime/runtime-state.js",
+        "runtime/runtime-overlay.js",
+        "runtime/runtime-readme-discovery.js",
+        "runtime/runtime-topology.js",
+        "runtime/runtime-bootstrap.js"
       ],
       "matches": [
         "https://hmfbr-com.github.io/*",
