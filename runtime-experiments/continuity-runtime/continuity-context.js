@@ -1,23 +1,27 @@
 const runtimeState = {
   environment: window.location.hostname,
   domReady: document.readyState,
+  secureContext: window.isSecureContext,
   overlay: true,
   locality: false,
   manifest: false,
   clipboard: !!navigator.clipboard,
   continuityContext: false,
-  version: '0.2'
+  clipboardWrites: 0,
+  clipboardFailures: 0,
+  lastError: null,
+  version: '0.3'
 }
+
+let runtimePanel = null
 
 function createPanel() {
   const panel = document.createElement('div')
-
   panel.id = 'continuity-runtime-panel'
-
   panel.style.position = 'fixed'
   panel.style.bottom = '16px'
   panel.style.right = '16px'
-  panel.style.width = '340px'
+  panel.style.width = '360px'
   panel.style.background = '#111'
   panel.style.color = '#f5f5f5'
   panel.style.border = '1px solid #555'
@@ -26,138 +30,104 @@ function createPanel() {
   panel.style.fontFamily = 'Arial, sans-serif'
   panel.style.fontSize = '12px'
   panel.style.lineHeight = '1.5'
-
   document.body.appendChild(panel)
-
   return panel
 }
 
-function renderDiagnostics(panel) {
-  panel.innerHTML = `
-    <div style="font-weight:bold;margin-bottom:8px;">
-      CONTINUITY RUNTIME
-    </div>
+function renderDiagnostics() {
+  if (!runtimePanel) return
 
+  runtimePanel.innerHTML = `
+    <div style="font-weight:bold;margin-bottom:8px;">CONTINUITY RUNTIME</div>
     <div>Environment: ${runtimeState.environment}</div>
     <div>Runtime Version: ${runtimeState.version}</div>
     <div>DOM State: ${runtimeState.domReady}</div>
-
-    <div style="margin-top:8px;font-weight:bold;">
-      Capabilities
-    </div>
-
-    <div>Overlay: ${runtimeState.overlay ? 'ACTIVE' : 'INACTIVE'}</div>
-    <div>Manifest: ${runtimeState.manifest ? 'LOADED' : 'PENDING'}</div>
-    <div>Locality: ${runtimeState.locality ? 'LOADED' : 'PENDING'}</div>
-    <div>Clipboard: ${runtimeState.clipboard ? 'READY' : 'UNAVAILABLE'}</div>
-    <div>Context Runtime: ${runtimeState.continuityContext ? 'ACTIVE' : 'PENDING'}</div>
-
+    <div>Secure Context: ${runtimeState.secureContext}</div>
+    <div style="margin-top:8px;font-weight:bold;">Clipboard Metrics</div>
+    <div>Writes: ${runtimeState.clipboardWrites}</div>
+    <div>Failures: ${runtimeState.clipboardFailures}</div>
     <div style="margin-top:10px;">
-      <button id="copy-continuity-context"
-        style="background:#202020;color:#fff;border:1px solid #666;padding:8px 10px;cursor:pointer;">
-        Copy Continuity Context
-      </button>
+      <button id="copy-continuity-context" style="background:#202020;color:#fff;border:1px solid #666;padding:8px 10px;cursor:pointer;">Copy Continuity Context</button>
     </div>
-
-    <div id="runtime-events"
-      style="margin-top:10px;border-top:1px solid #333;padding-top:8px;">
-      <div style="font-weight:bold;margin-bottom:4px;">Runtime Events</div>
-    </div>
+    <div id="runtime-events" style="margin-top:10px;border-top:1px solid #333;padding-top:8px;"><div style="font-weight:bold;margin-bottom:4px;">Runtime Events</div></div>
+    <div id="runtime-errors" style="margin-top:10px;border-top:1px solid #552222;padding-top:8px;color:#ff9090;"><div style="font-weight:bold;margin-bottom:4px;">Runtime Errors</div><div>${runtimeState.lastError || 'none'}</div></div>
   `
+
+  const button = document.getElementById('copy-continuity-context')
+  if (button) button.onclick = copyContinuityContext
 }
 
 function logEvent(message) {
   const events = document.getElementById('runtime-events')
-
   if (!events) return
-
   const item = document.createElement('div')
-  item.innerText = `[OK] ${message}`
-
+  item.innerText = '[OK] ' + message
   events.appendChild(item)
 }
 
+function logError(message) {
+  runtimeState.lastError = message
+  console.error('continuity_runtime_error', message)
+  renderDiagnostics()
+}
+
 async function generateContinuityContext() {
-  try {
-    const localityResponse = await fetch('./locality-index.json')
-    const locality = await localityResponse.json()
+  const localityResponse = await fetch('./locality-index.json')
+  const locality = await localityResponse.json()
+  runtimeState.locality = true
 
-    runtimeState.locality = true
+  const runtimeResponse = await fetch('./runtime-manifest.json')
+  const runtime = await runtimeResponse.json()
+  runtimeState.manifest = true
+  runtimeState.continuityContext = true
 
-    const runtimeResponse = await fetch('./runtime-manifest.json')
-    const runtime = await runtimeResponse.json()
-
-    runtimeState.manifest = true
-    runtimeState.continuityContext = true
-
-    const packet = {
-      timestamp: new Date().toISOString(),
-      environment: runtimeState.environment,
-      runtime: runtime.runtime,
-      version: runtime.version,
-      locality: locality.locality,
-      neighbors: locality.neighbors.map(n => ({
-        label: n.label,
-        type: n.type,
-        path: n.path
-      }))
-    }
-
-    return JSON.stringify(packet, null, 2)
-  } catch (error) {
-    console.error('continuity_context_failed', error)
-    return 'continuity context generation failed'
-  }
+  return JSON.stringify({
+    timestamp: new Date().toISOString(),
+    environment: runtimeState.environment,
+    runtime: runtime.runtime,
+    version: runtime.version,
+    locality: locality.locality
+  }, null, 2)
 }
 
 async function copyContinuityContext() {
-  const context = await generateContinuityContext()
+  logEvent('Clipboard request initiated')
 
-  await navigator.clipboard.writeText(context)
+  try {
+    if (!window.isSecureContext) {
+      throw new Error('Window not secure context')
+    }
 
-  const notice = document.createElement('div')
-  notice.innerText = 'Continuity context copied successfully'
-  notice.style.position = 'fixed'
-  notice.style.top = '16px'
-  notice.style.left = '16px'
-  notice.style.background = '#14532d'
-  notice.style.color = '#f5f5f5'
-  notice.style.padding = '10px'
-  notice.style.border = '1px solid #1f7a45'
-  notice.style.zIndex = '999999'
+    if (!navigator.clipboard) {
+      throw new Error('Clipboard API unavailable')
+    }
 
-  document.body.appendChild(notice)
+    const context = await generateContinuityContext()
 
-  logEvent('Continuity context copied')
+    await navigator.clipboard.writeText(context)
 
-  setTimeout(() => {
-    notice.remove()
-  }, 3000)
+    runtimeState.clipboardWrites += 1
+    renderDiagnostics()
+    logEvent('Clipboard write success')
+  } catch (error) {
+    runtimeState.clipboardFailures += 1
+    logError('Clipboard failure: ' + error.message)
+  }
 }
 
 function initializeRuntime() {
-  const panel = createPanel()
-
-  renderDiagnostics(panel)
-
+  runtimeState.domReady = document.readyState
+  runtimePanel = createPanel()
+  renderDiagnostics()
   logEvent('Overlay initialized')
-  logEvent('Diagnostics rendered')
-
-  const button = document.getElementById('copy-continuity-context')
-
-  if (button) {
-    button.onclick = copyContinuityContext
-    logEvent('Clipboard runtime active')
-  }
+  logEvent('Secure context: ' + window.isSecureContext)
 
   generateContinuityContext().then(() => {
-    renderDiagnostics(panel)
-    logEvent('Manifest loaded')
-    logEvent('Locality index loaded')
+    renderDiagnostics()
     logEvent('Continuity runtime active')
+  }).catch(error => {
+    logError(error.message)
   })
-
-  console.log('continuity_runtime_initialized', runtimeState)
 }
 
 if (document.readyState === 'loading') {
