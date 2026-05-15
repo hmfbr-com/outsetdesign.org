@@ -1,6 +1,6 @@
 # Continuity Runtime Experiment
 
-Version: 0.2
+Version: 0.2.1
 Status: Active
 Date: 2026-05-15
 
@@ -20,6 +20,7 @@ The purpose is to validate:
 - runtime lifecycle stabilization
 - runtime topology observability
 - Global Configuration System propagation
+- runtime-assisted continuity workflows
 
 ---
 
@@ -39,6 +40,8 @@ Current canonical runtime modules:
 - runtime-readme-discovery.js
 - runtime-topology.js
 - runtime-bootstrap.js
+- runtime-diagnostics-overlay.js
+- runtime-continuity-packet.js
 
 These modules now provide:
 
@@ -49,6 +52,63 @@ These modules now provide:
 - runtime topology inspection
 - canonical runtime bootstrap sequencing
 - runtime configuration propagation
+- runtime diagnostics rendering
+- continuity packet export behavior
+
+---
+
+# Current Operational Runtime Behaviors
+
+The runtime now operationally supports:
+
+- visible diagnostics overlays
+- cross-domain runtime augmentation
+- continuity packet export
+- runtime module inspection
+- runtime lifecycle visibility
+- recursive locality overlays
+- continuity runtime badges
+
+Current continuity packet export shortcut:
+
+```text
+ALT + C
+```
+
+This attempts to export a continuity packet containing:
+
+- runtime state
+- topology state
+- environment
+- runtime identifiers
+- continuity metadata
+
+---
+
+# Overlay Coexistence Discovery
+
+The runtime has now reached the first stage of multi-overlay coexistence.
+
+Operationally observed:
+
+- overlay overlap
+- viewport collision
+- insufficient overlay orchestration
+- absent layout governance
+
+This now establishes the next important implementation direction:
+
+- runtime-layout-orchestrator.js
+- runtime-overlay-registry.js
+- runtime-viewport-governance.js
+
+The runtime is therefore increasingly transitioning from:
+
+- runtime existence
+
+into:
+
+- runtime coexistence governance.
 
 ---
 
@@ -74,12 +134,14 @@ The current runtime direction increasingly favors:
 - bounded runtime observability
 - locality-aware runtime interaction
 - explicit runtime lifecycle visibility
+- inspectable continuity mediation
 
 rather than:
 
 - hidden mutable state
 - topology-fragmented runtime assumptions
 - hardcoded runtime semantics
+- opaque orchestration
 
 ---
 
@@ -99,6 +161,9 @@ The first operational runtime confrontation has successfully validated:
 - runtime configuration propagation
 - runtime topology inspection
 - GitHub-hosted runtime augmentation
+- diagnostics overlay rendering
+- continuity packet export behavior
+- cross-domain runtime augmentation
 
 This represents the first operational continuity membrane validation under actual browser and GitHub-native runtime conditions.
 
@@ -138,6 +203,9 @@ Included:
 - nearby-locality surfacing
 - recursive README discovery
 - singleton runtime lifecycle control
+- diagnostics overlay rendering
+- continuity packet export
+- cross-domain runtime augmentation
 
 Excluded:
 
@@ -167,6 +235,8 @@ contextual locality overlays
     ↓
 recursive locality interaction
     ↓
+runtime-assisted continuity workflows
+    ↓
 local-first continuity augmentation
 ```
 
@@ -185,6 +255,7 @@ Validate that repository-native continuity artifacts can:
 - support locality-aware interaction
 - expose runtime topology
 - expose runtime lifecycle state
+- support runtime-assisted continuity workflows
 
 under actual GitHub-native runtime conditions.
 
@@ -243,24 +314,39 @@ Current targets:
 - runtime module stabilization
 - runtime configuration propagation
 - runtime dependency visibility
+- diagnostics overlay orchestration
 
 ---
 
 ## Phase 4 — Continuity Interaction
 
+Status: ACTIVE
+
+Current targets:
+
+- continuity packet workflows
+- runtime-assisted continuity mediation
+- continuity packet export
+- overlay interaction primitives
+- continuity state visibility
+
+---
+
+## Phase 5 — Overlay Governance
+
 Status: NEXT
 
 Targets:
 
-- markdown artifact loading
-- annotation primitives
-- local persistence
-- continuity references
-- overlay interaction primitives
+- overlay coexistence stabilization
+- viewport governance
+- layout orchestration
+- overlay docking systems
+- progressive disclosure
 
 ---
 
-## Phase 5 — Cross-Repository Runtime Interaction
+## Phase 6 — Cross-Repository Runtime Interaction
 
 Status: PLANNED
 
@@ -273,7 +359,7 @@ Targets:
 
 ---
 
-## Phase 6 — Workflow-Generated Runtime Infrastructure
+## Phase 7 — Workflow-Generated Runtime Infrastructure
 
 Status: PLANNED
 
@@ -287,7 +373,7 @@ Targets:
 
 ---
 
-## Phase 7 — SVG-Native Runtime Exploration
+## Phase 8 — SVG-Native Runtime Exploration
 
 Status: FUTURE
 
@@ -330,6 +416,8 @@ before large-scale capability expansion.
 - recursive locality explosion
 - runtime duplication
 - bootstrap sequencing conflicts
+- overlay collision
+- viewport saturation
 
 ---
 
@@ -351,4 +439,6 @@ into:
 - executable runtime topology stabilization
 - recursive locality experimentation
 - contextual traversal experimentation
-- configuration-aware runtime infrastructure.
+- configuration-aware runtime infrastructure
+- visible runtime behavior-layer emergence
+- runtime-assisted continuity workflows.
