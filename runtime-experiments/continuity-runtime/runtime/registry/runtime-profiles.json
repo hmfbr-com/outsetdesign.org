@@ -1,0 +1,25 @@
+{
+  "profiles": {
+    "passive": {
+      "overlays": false,
+      "diagnostics": true,
+      "continuityExport": false
+    },
+    "lightweight": {
+      "overlays": true,
+      "diagnostics": true,
+      "continuityExport": true
+    },
+    "diagnostics": {
+      "overlays": true,
+      "diagnostics": true,
+      "continuityExport": false
+    },
+    "continuity-heavy": {
+      "overlays": true,
+      "diagnostics": true,
+      "continuityExport": true,
+      "localityTraversal": true
+    }
+  }
+}
