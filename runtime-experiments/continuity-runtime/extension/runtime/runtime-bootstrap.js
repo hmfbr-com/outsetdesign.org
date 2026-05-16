@@ -1,6 +1,10 @@
 async function initializeCanonicalContinuityRuntime() {
   console.log('canonical_continuity_runtime_bootstrap_started');
 
+  if (window.initializeReminderRegistry) {
+    await window.initializeReminderRegistry();
+  }
+
   if (window.initializeContinuityOverlay) {
     window.initializeContinuityOverlay();
   }
@@ -13,10 +17,18 @@ async function initializeCanonicalContinuityRuntime() {
     window.discoverContinuityReadmes();
   }
 
-  window.addEventListener('keydown', event => {
+  window.addEventListener('keydown', async event => {
     if (event.altKey && event.key.toLowerCase() === 'c') {
       if (window.exportContinuityPacket) {
-        window.exportContinuityPacket();
+        await window.exportContinuityPacket();
+      }
+    }
+
+    if (event.altKey && event.key.toLowerCase() === 'r') {
+      event.preventDefault();
+
+      if (window.captureContinuityReminder) {
+        await window.captureContinuityReminder();
       }
     }
   });
